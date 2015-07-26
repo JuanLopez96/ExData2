@@ -1,0 +1,7 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+png(filename='plot1.png', width=480, height=480)
+TotEmi <- aggregate(NEI$Emissions, by=list(NEI$year), FUN=sum)
+names(TotEmi) <- c("Year", "PM2.5 Emissions (in Tons)")
+plot(TotEmi, pch=20, type="l", main="Total PM2.5 Emissions in the US", lwd=3, col="Blue")
+dev.off()
